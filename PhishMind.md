@@ -16,6 +16,27 @@ PhishMind AI is an enterprise-grade platform designed to proactively measure, tr
 
 ---
 
+## 🛠️ Tech Stack
+
+### Frontend
+*   **Framework**: [React 19](https://react.dev/) (Vite)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/)
+*   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+*   **State Management**: [TanStack Query v5](https://tanstack.com/query)
+*   **Charts**: [Recharts](https://recharts.org/)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Routing**: [React Router 7](https://reactrouter.com/)
+
+### Backend
+*   **Framework**: [FastAPI](https://fastapi.tiangolo.com/)
+*   **ORM**: [SQLAlchemy](https://www.sqlalchemy.org/)
+*   **Database**: [PostgreSQL](https://www.postgresql.org/)
+*   **Validation**: [Pydantic v2](https://docs.pydantic.dev/)
+*   **AI Engine**: [Google Gemini AI](https://ai.google.dev/)
+*   **Email Service**: [Resend](https://resend.com/)
+
+---
+
 ## 🏗️ Architecture & How It Works
 
 PhishMind AI operates on a modern, decoupled architecture:
@@ -26,47 +47,63 @@ PhishMind AI operates on a modern, decoupled architecture:
 
 ---
 
-## 🛠️ Getting Started
+## 🏃 Run Instructions
 
 ### Prerequisites
-*   Node.js (v18+)
-*   Python 3.10+
-*   PostgreSQL
-*   Gemini API Key
-*   Resend API Key
+*   **Node.js**: v18.0.0 or higher
+*   **Python**: v3.10.0 or higher
+*   **PostgreSQL**: A running instance with a database created for PhishMind.
+*   **API Keys**:
+    *   `GOOGLE_API_KEY` (from [Google AI Studio](https://aistudio.google.com/))
+    *   `RESEND_API_KEY` (from [Resend](https://resend.com/))
 
-### 1. Backend Setup (FastAPI)
-Navigate to the backend directory, set up your virtual environment, and install dependencies:
+### 1. Backend Setup
+1.  Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2.  Create and activate a virtual environment:
+    ```bash
+    python -m venv venv
+    # Windows:
+    venv\Scripts\activate
+    # macOS/Linux:
+    source venv/bin/activate
+    ```
+3.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  Configure environment:
+    ```bash
+    cp .env.example .env
+    # Update .env with your DATABASE_URL, GOOGLE_API_KEY, and RESEND_API_KEY
+    ```
+5.  Seed the database (Initial data):
+    ```bash
+    python seed.py
+    ```
+6.  Start the FastAPI server:
+    ```bash
+    uvicorn main:app --reload --port 8000
+    ```
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-Configure your environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your database credentials and API keys
-```
-
-Initialize the database and start the server:
-```bash
-python seed.py
-uvicorn main:app --reload --port 8000
-```
-
-### 2. Frontend Setup (React + Vite)
-Open a new terminal, navigate to the frontend directory, install dependencies, and start the development server:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-The frontend will be available at `http://localhost:5173` and will proxy API requests to your local backend.
+### 2. Frontend Setup
+1.  Open a new terminal and navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    # OR if you prefer pnpm
+    pnpm install
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Access the dashboard at `http://localhost:5173`.
 
 ---
 
