@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap');
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-light-bg text-light-primary antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .dark body {
+    @apply bg-dark-bg text-dark-primary;
+  }
+
+  /* Native select dark mode text fix */
+  select {
+    @apply text-light-primary dark:text-dark-primary;
+    color-scheme: light;
+  }
+
+  .dark select {
+    color-scheme: dark;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-light-bg dark:bg-dark-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-light-border dark:bg-dark-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-light-secondary dark:bg-dark-secondary;
+  }
+}
